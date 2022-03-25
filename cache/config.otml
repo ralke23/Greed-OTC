@@ -1,0 +1,66 @@
+window-size: 801 601
+window-pos: 880 240
+window-maximized: false
+uuid: wiar5T9P3MDv9/x4ObnEMUrtWok=
+locale: en
+enableAudio: true
+autoChaseOverride: true
+preciseControl: false
+antialiasingMode: 1
+backgroundFrameRate: 201
+displayMana: true
+painterEngine: 0
+enableMusicSound: true
+showLevelsInConsole: true
+ambientLight: 0
+showFps: false
+showEventMessagesInConsole: true
+enableHighlightMouseTarget: true
+openMaximized: false
+showStatusMessagesInConsole: true
+showTimestampsInConsole: true
+showPrivateMessagesOnScreen: true
+showPing: false
+moveStack: false
+forceEffectOptimization: true
+floatingEffect: false
+floorFading: 500
+showLeftPanel: false
+showInfoMessagesInConsole: true
+drawViewportEdge: false
+classicControl: false
+drawEffectOnTop: false
+optimizeFps: true
+shadowFloorIntensity: 30
+crosshair: default
+displayText: true
+hotkeyDelay: 70
+turnDelay: 50
+dontStretchShrink: false
+showPrivateMessagesInConsole: true
+enableLights: true
+vsync: true
+fullscreen: false
+smartWalk: false
+showRightExtraPanel: false
+floorViewMode: 1
+displayNames: true
+musicSoundVolume: 100
+displayHealth: true
+healthcircle_opacity: 0.35
+healthcircle_hpcircle: false
+healthcircle_mpcircle: false
+game_interface:
+  splitterMarginBottom: 172
+VipList:
+  VipInfo:
+game_console:
+  messageHistory:
+  wasdMode: false
+UseIgnoreList: false
+UseWhiteList: false
+IgnorePrivateMessages: false
+IgnoreYelling: false
+IgnorePlayers:
+WhitelistedPlayers:
+ServerList:
