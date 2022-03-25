@@ -1,0 +1,10 @@
+Module
+  name: game_tutorial
+  description: Game Tutorial
+  author: 
+  sandboxed: true
+  scripts: [tutorial]
+  autoload-priority: 1001
+  autoload: true
+  @onLoad: init()
+  @onUnload: terminate()

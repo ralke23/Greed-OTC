@@ -1,0 +1,464 @@
+Waypoint < Label
+  background-color: alpha
+  text-offset: 2 0
+  focusable: true
+  id: wpt
+
+BotBox < OptionCheckBox
+  @onCheckChange: modules.otcbot.toggleLoop(self:getId())
+
+NormalBotBox < CheckBox
+  @onCheckChange: modules.otcbot.toggleLoop(self:getId())
+  
+MainWindow
+  !text: tr('Tasker')
+  size: 220 730
+  @onEscape: self:hide()
+
+  Label
+    height: 1
+    id: fixes_bug
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: parent.top
+    focusable: true
+
+  BotBox
+    id: autoAttack
+    !tooltip: tr('Automatically attack monsters.')
+    !text: tr('Autoattack')
+    focusable: true
+  
+  BotBox
+    id: LureMonsters
+    !text: tr('Lure monsters')
+    !tooltip: tr('Only attack monsters when theres more monsters than in the max, and stop attacking when theres less than in the min box.')
+    anchors.top: prev.bottom
+    anchors.left: clear.left
+    width: 180
+    focusable: true
+
+  Label
+    id: MaxLabel
+    width: 60
+    !text: tr('Max:')
+    anchors.left: prev.left
+    anchors.top: prev.bottom
+    margin-top: 5
+
+  TextEdit
+    id: LureMaximum
+    width: 30
+    !text: tr('5')
+    anchors.left: prev.right
+    anchors.top: LureMonsters.bottom
+    margin-top: 2
+    margin-left: 2
+
+
+  Label
+    id: MinLabel
+    width: 60
+    !text: tr('Min:')
+    anchors.left: prev.right
+    anchors.top: LureMonsters.bottom
+    margin-top: 5
+    margin-left: 10
+
+  TextEdit
+    id: LureMinimum
+    width: 30
+    !text: tr('2')
+    anchors.left: prev.right
+    anchors.top: LureMonsters.bottom
+    margin-top: 2
+    margin-left: 2
+
+  TextList
+    id: waypoints
+    height: 80
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 2
+    focusable: false
+    vertical-scrollbar: reasonListScrollBar
+
+  VerticalScrollBar
+    id: reasonListScrollBar
+    anchors.top: waypoints.top
+    anchors.bottom: waypoints.bottom
+    anchors.right: waypoints.right
+    step: 14
+    pixels-scroll: true
+
+  Button
+    id: buttonOk
+    !text: tr('Add waypoint')
+    width: 120
+    @onClick: modules.otcbot.fag()
+    anchors.top: waypoints.bottom
+    anchors.left: waypoints.left
+
+  BotBox
+    id: walking
+    !text: tr('Walking')
+    focusable: true
+
+  Label
+    id: wptlabel
+    !text: tr('Waypoint filename:') 
+    anchors.top: prev.bottom
+    anchors.left: prev.left
+
+  TextEdit
+    id: WptName
+    width: 120
+    !text: tr('default')
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    margin-top: 2
+    
+
+  Button
+    id: save
+    !text: tr('Save')
+    width: 80
+    @onClick: modules.otcbot.saveWaypoints()
+    !tooltip: tr('Saves your waypoints in the filename above, located inside modules/otcbot-master/wpts.')
+    anchors.top: prev.bottom
+    anchors.left: prev.left
+
+  Button
+    id: load
+    !text: tr('Load')
+    width: 80
+    @onClick: modules.otcbot.loadWaypoints()
+    !tooltip: tr('Loads your waypoints from the filename above, located inside modules/otcbot-master/wpts.')
+    anchors.top: save.top
+    anchors.left: save.right
+
+  Button
+    id: clear
+    !text: tr('Clear waypoints')
+    width: 120
+    @onClick: modules.otcbot.clearWaypoints()
+    anchors.top: save.bottom
+    anchors.left: save.left
+
+  HorizontalSeparator
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    margin-top: 8
+    margin-bot: 8
+
+
+  NormalBotBox
+    id: AutoHealSpell
+    !text: tr('Auto Heal Spell')
+    !tooltip: tr('Heal your character automatically with a spell when you are under a percentage of your maximum health.')
+    anchors.top: prev.bottom
+    anchors.left: clear.left
+    width: 180
+    focusable: true
+
+  Label
+    id: HealthSpellLabel
+    width: 120
+    !text: tr('Spell text:')
+    anchors.left: prev.left
+    anchors.top: prev.bottom
+    margin-top: 5
+
+  TextEdit
+    id: HealSpellText
+    width: 120
+    !text: tr('Exura')
+    anchors.left: parent.left
+    anchors.right: HealthSpellLabel.right
+    anchors.top: HealthSpellLabel.bottom
+    margin-top: 2
+
+  Label
+    id: HealthSpellLabel
+    !text: tr('Under HP:')
+    anchors.right: parent.right
+    anchors.top: HealthSpellLabel.top
+    margin-left: 18
+
+  TextEdit
+    id: HealthSpellPercent
+    !text: tr('90')
+    width: 30
+    anchors.right: prev.right
+    anchors.top: HealthSpellLabel.bottom
+    margin-top: 2
+    margin-left: 25
+
+  Label
+    id: Percent
+    !text: tr('%%')
+    anchors.left: HealthSpellPercent.right
+    anchors.top: HealthSpellLabel.bottom
+    margin-top: 2
+
+  HorizontalSeparator
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    margin-top: 12
+    margin-bot: 12
+
+  CheckBox
+    id: AutoHealItem
+    !text: tr('Auto Heal Item')
+    !tooltip: tr('Heal your character automatically with an item when you are under a percentage of your maximum health.')
+    anchors.top: prev.bottom
+    anchors.left: clear.left
+    width: 180
+    focusable: true
+
+  Label
+    id: HealthItemLabel
+    width: 120
+    !text: tr('Item ID:')
+    anchors.left: prev.left
+    anchors.top: prev.bottom
+    margin-top: 5
+
+  TextEdit
+    id: HealItem
+    width: 120
+    !text: tr('266')
+    anchors.left: parent.left
+    anchors.right: HealthItemLabel.right
+    anchors.top: HealthItemLabel.bottom
+    margin-top: 2
+
+  Label
+    id: HealthItemLabel
+    !text: tr('Under HP:')
+    anchors.right: parent.right
+    anchors.top: HealthItemLabel.top
+    margin-left: 18
+
+  TextEdit
+    id: HealItemPercent
+    !text: tr('90')
+    width: 30
+    anchors.right: prev.right
+    anchors.top: HealthItemLabel.bottom
+    margin-top: 2
+    margin-left: 25
+
+  Label
+    id: Percent
+    !text: tr('%%')
+    anchors.left: HealItemPercent.right
+    anchors.top: HealthItemLabel.bottom
+    margin-top: 2
+
+  HorizontalSeparator
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    margin-top: 12
+    margin-bot: 12
+
+  CheckBox
+    id: AutoMana
+    !text: tr('Mana Restore')
+    !tooltip: tr('Automatically use an item to restore your mana.')
+    anchors.top: prev.bottom
+    anchors.left: clear.left
+    width: 180
+    focusable: true
+
+  Label
+    id: ManaItemLabel
+    width: 120
+    !text: tr('Item ID:')
+    anchors.left: prev.left
+    anchors.top: prev.bottom
+    margin-top: 5
+
+  TextEdit
+    id: ManaItem
+    width: 120
+    !text: tr('268')
+    anchors.left: parent.left
+    anchors.right: ManaItemLabel.right
+    anchors.top: ManaItemLabel.bottom
+    margin-top: 2
+
+  Label
+    id: ManaItemLabel
+    !text: tr('Under MP:')
+    anchors.right: parent.right
+    anchors.top: ManaItemLabel.top
+    margin-left: 18
+
+  TextEdit
+    id: ManaPercent
+    !text: tr('90')
+    width: 30
+    anchors.right: prev.right
+    anchors.top: ManaItemLabel.bottom
+    margin-top: 2
+    margin-left: 25
+
+  Label
+    id: Percent
+    !text: tr('%%')
+    anchors.left: prev.right
+    anchors.top: ManaItemLabel.bottom
+    margin-top: 2
+
+  HorizontalSeparator
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    margin-top: 12
+    margin-bot: 12
+
+  NormalBotBox
+    id: AtkSpell
+    !text: tr('Attack spell')
+    !tooltip: tr('Automatically cast the spell below when you are attacking.')
+    anchors.top: prev.bottom
+    anchors.left: clear.left
+    width: 180
+    focusable: true
+
+  TextEdit
+    id: AtkSpellText
+    width: 120
+    !text: tr('exori vis')
+    anchors.top: prev.bottom
+    anchors.left: clear.left
+    margin-top: 2
+
+  HorizontalSeparator
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    margin-top: 12
+    margin-bot: 12
+
+  NormalBotBox
+    id: ManaTrain
+    !text: tr('Mana training')
+    !tooltip: tr('Automatically cast this spell when above mana:')
+    anchors.top: prev.bottom
+    anchors.left: clear.left
+    width: 180
+    focusable: true
+
+  TextEdit
+    id: ManaSpellText
+    width: 100
+    !text: tr('utana vid')
+    anchors.top: prev.bottom
+    anchors.left: clear.left
+    margin-top: 2
+
+
+  Label
+    id: Percent
+    !text: tr('Over')
+    anchors.left: prev.right
+    anchors.top: prev.top
+    margin-top: 2
+    margin-left: 18
+
+
+  TextEdit
+    id: ManaTrainPercent
+    !text: tr('90')
+    width: 30
+    anchors.left: prev.right
+    anchors.top: prev.top
+    margin-top: 2
+    margin-left: 5
+
+  Label
+    id: Percent
+    !text: tr('%%')
+    anchors.left: prev.right
+    anchors.top: prev.top
+    margin-top: 2
+
+
+  HorizontalSeparator
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    margin-top: 12
+    margin-bot: 12
+
+  NormalBotBox
+    id: AutoHaste
+    !text: tr('Auto haste')
+    anchors.top: prev.bottom
+    anchors.left: clear.left
+    width: 180
+    focusable: true
+
+  TextEdit
+    id: HasteText
+    width: 100
+    !text: tr('utani hur')
+    anchors.top: prev.bottom
+    anchors.left: clear.left
+    margin-top: 2
+
+  HorizontalSeparator
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    margin-top: 12
+    margin-bot: 12
+
+  NormalBotBox
+    id: AutoBuff
+    !text: tr('Auto buff spell')
+    anchors.top: prev.bottom
+    anchors.left: clear.left
+    width: 180
+    focusable: true
+
+  TextEdit
+    id: BuffText
+    width: 100
+    !text: tr('utito tempo')
+    anchors.top: prev.bottom
+    anchors.left: clear.left
+    margin-top: 2
+
+  NormalBotBox
+    id: AutoManaShield
+    !text: tr('Auto mana shield')
+    !tooltip: tr('Automatically cast utamo vita when you dont have magic shield')
+    anchors.top: prev.bottom
+    anchors.left: clear.left
+    width: 180
+    focusable: true
+
+  HorizontalSeparator
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    margin-top: 8
+    margin-bot: 8
+
+  NormalBotBox
+    id: AntiIdle
+    !text: tr('Anti Idle')
+    !tooltip: tr('Automatically change direction once in a while to stay logged in while training.')
+    anchors.top: prev.bottom
+    anchors.left: clear.left
+    width: 180
+    focusable: true
+

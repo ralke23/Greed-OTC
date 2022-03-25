@@ -1,0 +1,131 @@
+TutorialLabel < Label
+  font: verdana-11px-monochrome
+  text-offset: 2 0
+  focusable: true
+  background-color: alpha
+  
+  $focus:
+    background-color: #444444
+
+  $on focus:
+    color: #00ff00
+  $!on focus:
+    color: #ffffff
+
+MainWindow
+  size: 620 410
+  padding: 0
+  @onEscape: modules.game_tutorial.onClickTutorial()
+  
+  Panel
+    id: tutorialImg
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-right: 10
+    margin-top: 25
+    size: 407 206
+    border-width: 2
+    border-color: #201f1f
+
+  Panel
+    id: oak
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-right: 163
+    margin-top: 153
+    __image-source: imgs/default1
+
+  TextList
+    id: indexList
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    margin-left: 10
+    margin-top: 25
+    margin-bottom: 10
+    focusable: false
+    size: 180 180
+    vertical-scrollbar: indexScroll
+    focusable: true
+    phantom: false
+
+  ScrollablePanel
+    id: scrollablePainel
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    margin-right: 10
+    margin-bottom: 10
+    size: 407 156
+    background-color: #201f1f
+    vertical-scrollbar: textScroll
+    padding: 5
+
+    Label
+      id: tutorialText
+      text-wrap: true
+      text-auto-resize:true
+      anchors.right: parent.right
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-right: 13
+      focusable: true
+      phantom: false
+
+  VerticalScrollBar
+    id: textScroll
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    margin-bottom: 10
+    margin-right: 10
+    step: 16
+    height: 156
+
+  VerticalScrollBar
+    id: indexScroll
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    margin-top: 25
+    margin-bottom: 10
+    margin-left: 176
+    step: 16
+    height: 170
+
+  UIButton
+    id: cancelButton
+    image-source: imgs/exit
+    size: 16 16
+    anchors.right: parent.right
+    anchors.top: parent.top
+    margin-top: 3
+    margin-right: 5
+    @onClick: onClickTutorial()
+
+    $hover:
+      image-source: imgs/exit1
+      
+  UIButton
+    id: languageButton_en
+    image-source: imgs/flag_en
+    size: 16 16
+    anchors.left: parent.left
+    anchors.top: parent.top
+    margin-top: 3
+    margin-left: 5
+    @onClick: setLanguage('en')
+
+    $hover:
+      image-source: imgs/flag_en_hover      
+  
+  UIButton
+    id: languageButton_es
+    image-source: imgs/flag_es
+    size: 16 16
+    anchors.left: parent.left
+    anchors.top: parent.top
+    margin-top: 3
+    margin-left: 24
+    @onClick: setLanguage('es')
+
+    $hover:
+      image-source: imgs/flag_es_hover    

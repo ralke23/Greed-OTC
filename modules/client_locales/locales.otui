@@ -1,0 +1,36 @@
+LocalesMainLabel < Label
+  font: sans-bold-16px
+  color: #dfdfdf
+
+LocalesButton < UIWidget
+  size: 96 96
+  image-size: 96 96
+  image-smooth: true
+  text-offset: 0 45
+  font: verdana-11px-antialised
+
+UIWindow
+  id: localesWindow
+  background-color: #000000
+  opacity: 0.80
+  clipping: true
+  anchors.fill: parent
+
+  LocalesMainLabel
+    !text: tr('')
+    text-auto-resize: true
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.verticalCenter: parent.verticalCenter
+    margin-top: -100
+
+  Panel
+    id: localesPanel
+    margin-top: 50
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.top: prev.bottom
+    anchors.bottom: parent.bottom
+    layout:
+      type: grid
+      cell-size: 96 128
+      cell-spacing: 32
+      flow: true

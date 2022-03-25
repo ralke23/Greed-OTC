@@ -1,0 +1,11 @@
+Module
+  name: otcbot
+  description: Basic bot module
+  author: Lunia
+  website: www.otland.net
+  sandboxed: true 
+  scripts: [ luniabot ]
+  autoload: true
+  @onLoad: init()
+  @onUnload: terminate()
+

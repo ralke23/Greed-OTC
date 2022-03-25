@@ -1,0 +1,10 @@
+Module
+  name: game_areas
+  description: Area change notification
+  author: Oen44
+  website: otland.net/members/oen432.206904
+  autoload: true
+  sandboxed: true
+  scripts: [ areas ]
+  @onLoad: init()
+  @onUnload: terminate()

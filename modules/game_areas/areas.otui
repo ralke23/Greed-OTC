@@ -1,0 +1,13 @@
+Panel
+  anchors.top: parent.top
+  anchors.horizontalCenter: parent.horizontalCenter
+  margin-top: 30
+  height: 33
+  image-source: /images/ui/menubox
+  image-border: 3
+
+  Label
+    id: name
+    anchors.fill: parent
+    text-align: center
+    name: Example Area Name
