@@ -3,11 +3,9 @@ Module
   description: Handels sounds for Rising Client.
   author: Shawak
   website: none
-  
   autoload: true
   autoload-priority: 1000
   sandbox: true
-  
   scripts: [ rcsound ]
   @onLoad: init()
   @onUnload: terminate()
