@@ -9,4 +9,4 @@ Module
     -client_entergame
 
   @onLoad: |
-    EnterGame.setUniqueServer("play.greedot.net", 7171, 860)
+    EnterGame.setUniqueServer("localhost", 7171, 860)
