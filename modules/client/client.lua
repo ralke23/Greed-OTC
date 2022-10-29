@@ -1,17 +1,17 @@
 local musicFilename = "/sounds/startup"
 local musicChannel = nil
-  --if g_sounds then
-   -- musicChannel = g_sounds.getChannel(SoundChannels.Music)
-  --end
+  if g_sounds then
+  musicChannel = g_sounds.getChannel(SoundChannels.Music)
+  end
 
-  --function setMusic(filename)
-  --  musicFilename = filename
+  function setMusic(filename)
+  musicFilename = filename
 
-   -- if not g_game.isOnline() then
-  --    musicChannel:stop()
-    --  musicChannel:enqueue(musicFilename, 3)
-   -- end
-  --end
+  if not g_game.isOnline() then
+  musicChannel:stop()
+  musicChannel:enqueue(musicFilename, 3)
+  end
+  end
 
 function reloadScripts()
   g_textures.clearCache()
@@ -30,14 +30,14 @@ end
 
 function startup()
   -- Play startup music (The Silver Tree, by Mattias Westlund)
-   -- if musicChannel then
-    --  musicChannel:enqueue(musicFilename, 3)
-     -- connect(g_game, { onGameStart = function() musicChannel:stop(3) end })
-      --connect(g_game, { onGameEnd = function()
-     --     g_sounds.stopAll()
-      --    musicChannel:enqueue(musicFilename, 3)
-     -- end })
-   -- end
+   if musicChannel then
+    musicChannel:enqueue(musicFilename, 3)
+    connect(g_game, { onGameStart = function() musicChannel:stop(3) end })
+    connect(g_game, { onGameEnd = function()
+    g_sounds.stopAll()
+    musicChannel:enqueue(musicFilename, 3)
+    end })
+    end
 
   -- Check for startup errors
   local errtitle = nil

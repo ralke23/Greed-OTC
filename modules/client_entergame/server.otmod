@@ -2,8 +2,6 @@ Module
   name: addon_server
   description: Single server and protocol
   author: Fabricio Damazio
-  
-
   autoload: true
   autoload-priority: 1000
 
@@ -11,4 +9,4 @@ Module
     -client_entergame
 
   @onLoad: |
-    EnterGame.setUniqueServer("localhost", 7171, 860)
+    EnterGame.setUniqueServer("play.greedot.net", 7171, 860)
